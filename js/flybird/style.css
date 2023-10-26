@@ -9,6 +9,7 @@ body{
     height: 480px;
     background: url(./img/bg.jpg);
     position: relative;
+    overflow: hidden;
 }
 #headTitle{
     width: 236px;
