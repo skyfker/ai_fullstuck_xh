@@ -3,7 +3,7 @@ var num = 123       //数字
 var flag = false    //boolean 布尔
 var un = undefined  //有变量但没值
 var n = null
-
+    
 //引用类型  对象
 var obj = {
     name:'洋洋',
