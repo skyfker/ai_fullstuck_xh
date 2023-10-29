@@ -20,6 +20,8 @@ var arr = ['a','b','c',2]
 
 // arr.splice(2,1)  下标2删除，长度为1
 // arr.splice(2,0,false)   往下标2增加一个 false
+//indexOf() 方法可返回某个指定的字符串值在字符串中首次出现的位置。如果没有找到匹配的字符串则返回 -1
+
 
 // for(var i = 0;i<arr.length;i++){
 //     arr[i] = arr[i] + 1
