@@ -23,6 +23,7 @@ function getPostLikes(names) {
 }
 
 console.log(getPostLikes([]))
+console.log(getPostLikes(['美美']))
 console.log(getPostLikes(['美美','燕子']))
 console.log(getPostLikes(['美美','燕子','徐昊']))
 console.log(getPostLikes(['美美','燕子','徐昊','万先澄']))
