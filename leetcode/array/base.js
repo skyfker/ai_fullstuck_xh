@@ -16,7 +16,7 @@ var arr = ['a','b','c',2]
 // arr.push(true)    往数组最后一位加一个
 // arr.pop()         删除尾部
 // arr.unshift('hello') 头部增加
-// arr.shift() 尾部删除
+// arr.shift() 尾部增加
 
 // arr.splice(2,1)  下标2删除，长度为1
 // arr.splice(2,0,false)   往下标2增加一个 false
