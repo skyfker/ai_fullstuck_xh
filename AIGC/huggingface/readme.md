@@ -8,3 +8,6 @@
     .ipynb notebook
 - pipeline 核心模块，启动模块
     水管子
+
+- pipeline(task,model)
+    遥遥领先
