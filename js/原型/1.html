@@ -1,0 +1,20 @@
+<script>
+    function Person() {
+        this.name = '小明'
+        this.age = 18
+    }
+    Person.eat = function () {
+        console.log('想吃面条')
+    }
+
+    let p = new Person()
+    let p2 = new Person()
+
+    // console.log(Person.eat());
+    // Person.eat()
+    Person.prototype.say = function () {
+        console.log('hello,world!')
+    }
+    console.log(p);
+    p.say()
+</script>
