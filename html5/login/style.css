@@ -1,0 +1,88 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.login{
+    padding: 0 45px;
+    height: 100vh;
+    background-color:rgba(212, 48, 48, 1)
+}
+.login__hd{
+    width: 90px;
+    height: 27px;
+    left: 144px;
+    top: 18px;
+    color:rgba(255, 255,255, 1);
+    font-size: 18px;
+    line-height: 150%;
+    text-align: center;
+    position: absolute;
+}
+.logle{
+    background-image: url(./网易云音乐.png);
+    background-size: contain;
+    width: 139px;
+    height: 139px;
+    left: 120px;
+    top: 116px;
+    position: absolute;
+}
+.login__wrap{
+    width: 100%;
+    top: 415px;
+    text-indent: 5px;
+    color: rgba(255, 255, 255, 1);
+    border-radius: 2px;
+    font-size: 16px;
+    line-height: 500%;
+    position: relative;
+}
+.username #account{
+    width: 211px;
+	height: 42px;
+    border-radius: 2px;
+    border: rgba(153, 153, 153, 1) solid 1px;
+    background-color:rgba(212, 48, 48, 1);
+}
+.password #password{
+    width: 211px;
+	height: 42px;
+    border-radius: 2px;
+    border: rgba(153, 153, 153, 1) solid 1px;
+    background-color:rgba(212, 48, 48, 1);
+}
+#btn{
+    width: 260px;
+	height: 36px;
+	left: 70px;
+	top: 583px;
+	color: rgba(80, 80, 80, 1);
+	background-color: rgba(255, 255, 255, 1);
+	border-radius: 16px;
+	font-size: 16px;
+	line-height: 150%;
+	text-align: center;
+}
+.tanchu{
+    width: 141px;
+	height: 141px;
+	left: 125px;
+	top: 227px;
+	opacity: 0.7;
+	color: rgba(80, 80, 80, 1);
+	background-color: rgba(0, 0, 0, 1);
+	border-radius: 14px;
+	font-size: 16px;
+	line-height: 150%;
+	text-align: center;
+    position: fixed;
+}
+.tanchu .gou{
+    background-image: url(./icon-nike.png);
+	height: 100px;
+	left: 160px;
+	top: 253px;
+    background-size: 100px;
+    background-position: bottom;
+    background-repeat: no-repeat;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/c/font_4345879_p028mkcirje.css">
+</head>
+<body>
+    <div class="login">
+        <div class="login__hd">网易云音乐</div>
+        <div class="logle"></div>
+        <div class="login__wrap">
+            <div class="username">
+                <span>账号</span>
+                <input type="text" id="account" maxlength="11" minlength="11" placeholder="输入手机号">
+            </div>
+            <div class="password">
+                <span>密码</span>
+                <input type="password" id="password" maxlength="20" minlength="2" placeholder="输入手机号">
+            </div>
+
+            <button id="btn">登录</button>
+        </div>
+        <div class="tanchu">
+            <span class="cg">登录成功</span>
+            <div class="gou"></div>
+        </div>
+    </div>
+</body>
+<script>
+    let btn = document.getElementById('btn')
+    btn.addEventListener('click', () => {
+        // 发一个HTTP请求
+        let xhr = new XMLHttpRequest()
+        var inputAccount = document.getElementById('account').value;
+        var inputPassword = document.getElementById('password').value;
+        xhr.open('GET', 'http://192.168.31.26:3000/login?username=' + inputAccount + '&password=' + inputPassword, true)
+        xhr.send()
+    })
+</script>
+</html>
