@@ -14,7 +14,7 @@
 //         n: 'coding'
 //     }
 // }
-// let b = Object.assgin({},a)
+// let b = Object.assign({},a)
 // a.like.n = 'running'
 // console.log(b);
 
