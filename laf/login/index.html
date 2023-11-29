@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="todos"></ul>
+    <script>
+        (async function() {
+        const todosUL = document.getElementById('todos');
+        //由es6提供的Promise类，有then 控制流程的方法
+        // 参数是一个函数， 在这里面封装耗时的异步任务
+        // Promise 默认会给函数传递的第一个参数是resolve函数
+        // 调用resolve then 就执行
+        const p = new Promise((resolve) => {
+            // console.log('函数执行')
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET','http://localhost:3000/todos',true);
+            xhr.send();
+            xhr.onreadystatechange = (e) => {
+                if (e.target.status === 200 && e.target.readyState === 4) {
+                    console.log(e.target.responseText)
+                    const data = JSON.parse(e.target.responseText)
+                    console.log(data)
+                    resolve(data)   
+                }
+            
+            }
+        })
+
+        const data = await p;
+        todosUL.innerHTML = data.map(todo => `
+            <li>${todo.txt}</li>
+        `).join('')
+    })()
+
+        // const xhr = new XMLHttpRequest();//实例化一个xhr的对象，这个对象拥有向后端发起http请求的功能
+        // xhr.open('GET','http://localhost:3000/todos',true);
+        // xhr.send();
+        
+        // xhr.onreadystatechange = (e) => {
+        //     if (e.target.status === 200 && e.target.readyState === 4) {
+        //         console.log(e.target.responseText)
+        //     }
+        //     const data = JSON.parse(e.target.responseText)
+        //     todosUL.innerHTML = data.map(todo => `
+        //         <li>
+        //             ${todo.txt}
+        //         </li>
+        //     `).join('')
+        // }
+
+        // (async function() {//有异步任务的立即执行函数
+        //     const todosUL = document.getElementById('todos');
+        //     const res = await fetch('http://localhost:3000/todos')
+        //     const data = await res.json();
+        //     console.log(data);
+        //     console.log('hello');
+        // })
+
+        
+    </script>
+</body>
+</html>
