@@ -11,6 +11,21 @@ const routes = [
         name: 'home',
         component: Home
     },
+    {
+        path: '/category',
+        name: 'category',
+        component: () => import('@/views/Category.vue') // 路由的懒加载
+    },
+    {
+        path: '/cart',
+        name: 'cart',
+        component: () => import('@/views/Cart.vue')
+    },
+    {
+        path: '/user',
+        name: 'user',
+        component: () => import('@/views/User.vue') 
+    },
 ]
 
 const router = createRouter({
