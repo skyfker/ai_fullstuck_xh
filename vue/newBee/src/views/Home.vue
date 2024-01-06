@@ -11,7 +11,10 @@
                 <router-link to="#" class="search-title">不买就滚哇</router-link>
             </div>
 
-            <router-link to="/login" class="login">登录</router-link>
+            <router-link to="/login" class="login" v-if="!state.isLogin">登录</router-link>
+            <router-link to="/user" class="login" v-else>
+                <van-icon name="user-o" />
+            </router-link>
 
         </header>
 
@@ -27,6 +30,7 @@
         <GoodsList :list="state.recommendGoodsData" title="热门咯"/>
         <GoodsList :list="state.hotGoodsData"  title="新品哇"/>
 
+
         <!-- footBar -->
         <NavBar />
     </div>
@@ -39,6 +43,7 @@ import { getHome } from '@/api/home.js'
 import { onMounted, reactive, nextTick } from 'vue';
 import { showToast } from 'vant';
 import GoodsList from '@/components/Goods.vue'
+
 
 const state = reactive({// state是被reactive修饰过的对象，也是响应式对象
     swiperList: [],
@@ -88,7 +93,8 @@ const state = reactive({// state是被reactive修饰过的对象，也是响应�
     newGoodsData: [],
     hotGoodsData: [],
     recommendGoodsData: [],
-    headerActive: false
+    headerActive: false,
+    isLogin: false
 })
 
 const goDetail = (name) => {
@@ -97,6 +103,11 @@ const goDetail = (name) => {
 
 //请求banner数据
 onMounted(async () => {
+    const token = localStorage.getItem('token')
+    if(token) {
+        state.isLogin = true
+    }
+
     const { data } = await getHome() //set up 中已经封装好了async
     console.log(data);
     state.swiperList = data.data.carousels
