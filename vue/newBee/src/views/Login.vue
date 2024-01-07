@@ -10,7 +10,7 @@
                     :rules="[{ required: true, message: '请填写用户名' }]" />
                 <van-field v-model="state.password" type="password" name="密码" label="密码" placeholder="密码"
                     :rules="[{ required: true, message: '请填写密码' }]" />
-                <van-field v-model="state.varify" name="验证码" label="验证码" placeholder="验证码"
+                <van-field v-model="state.verify" name="验证码" label="验证码" placeholder="验证码"
                     :rules="[{ required: true, message: '请填写验证码' }]">
                     <template #button>
                         <ImageVerify ref="verifyRef" />
@@ -31,7 +31,7 @@
                     :rules="[{ required: true, message: '请填写用户名' }]" />
                 <van-field v-model="state.password" type="password" name="密码" label="密码" placeholder="密码"
                     :rules="[{ required: true, message: '请填写密码' }]" />
-                <van-field v-model="state.varify" name="验证码" label="验证码" placeholder="验证码"
+                <van-field v-model="state.verify" name="验证码" label="验证码" placeholder="验证码"
                     :rules="[{ required: true, message: '请填写验证码' }]">
                     <template #button>
                         <ImageVerify ref="verifyRef" />
@@ -71,7 +71,7 @@ const state = reactive({
     type: 'login'
 })
 
-const toggle = (type) => {
+const toggle = (type) => { //切换登录和注册两种模式
     state.type = type
 }
 
@@ -92,8 +92,13 @@ const onSubmit = async () => {
         window.location.href = '/'  // 跳页面浏览器会刷新
 
     } else { // 注册
-    //
-        
+    //register 成功后切换到登录状态
+        const { data } = await register({
+            'loginName': state.username,
+            'password': state.password
+        })
+        console.log(data);
+
     }
 }
 </script>
