@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li id="a">a</li>
+        <li id="b">b</li>
+        <li id="c">c</li>
+        <li id="d">d</li>
+        <li id="e">e</li>
+    </ul>
+</body>
+
+<!-- <script>
+    // let list = document.querySelectorAll('li')
+    let list = document.getElementsByTagName('li')
+    Array.from(list).forEach(li => {
+        li.addEventListener("click", ()=>{
+        console.log(li.innerHTML);
+    },)
+    });
+
+</script> -->
+
+<script>
+    let ul = document.getElementsByTagName('ul')[0]
+    ul.addEventListener("click", (event)=>{
+        //把原本
+        console.log(event.target.innerHTML);
+    },)
+</script>
+</html>
