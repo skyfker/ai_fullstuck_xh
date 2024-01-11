@@ -14,7 +14,7 @@ const imgCode = reactive({
     code: '',
 })
 
-defineExpose({ veirfyCode: imgCode })
+defineExpose({ verifyCode: imgCode })
 
 onMounted(() => {
     // console.log(verify.value);

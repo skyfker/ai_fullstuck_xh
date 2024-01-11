@@ -61,7 +61,7 @@ import md5 from 'md5'
 const verifyRef = ref(null)
 
 // onMounted(() => {
-//     console.log(verifyRef.value.veirfyCode.code);
+//     console.log(verifyRef.value.verifyCode.code);
 // })
 
 const state = reactive({
@@ -88,7 +88,7 @@ const onSubmit = async () => {
             'passwordMd5': md5(state.password)
         })
         console.log(data);
-        localStorage.setItem('token', data.data)
+        localStorage.setItem('token', data)
         window.location.href = '/'  // 跳页面浏览器会刷新
 
     } else { // 注册

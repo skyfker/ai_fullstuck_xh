@@ -110,10 +110,10 @@ onMounted(async () => {
 
     const { data } = await getHome() //set up 中已经封装好了async
     console.log(data);
-    state.swiperList = data.data.carousels
-    state.newGoodsData = data.data.newGoodses
-    state.hotGoodsData = data.data.hotGoodses
-    state.recommendGoodsData = data.data.recommendGoodses
+    state.swiperList = data.carousels
+    state.newGoodsData = data.newGoodses
+    state.hotGoodsData = data.hotGoodses
+    state.recommendGoodsData = data.recommendGoodses
 }) 
 
 nextTick(() => { //写在nextTick中的逻辑一定会在页面加载完毕之后执行
