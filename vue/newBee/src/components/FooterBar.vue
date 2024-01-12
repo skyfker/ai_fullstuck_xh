@@ -34,7 +34,7 @@ const handelAddCart = async() => {
   const res = await addCart({ goodsCount: 1, goodsId: props.id })
   console.log(res);
   if( res.resultCode === 200){
-    showSuccessToast('只给买一件哇');
+    showSuccessToast('购物车里已经存在了哇');
     store.dispatch('setCartcountAction')
   }
 }
@@ -45,10 +45,10 @@ const handelAddCart = async() => {
 
 </style>
 <style>
-.van-button--warning{
+.van-action-bar .van-button--warning{
     background: linear-gradient(to right, #18ba66, #0c7b42);
 }
-.van-button--danger{
+.van-action-bar .van-button--danger{
     background: linear-gradient(to right, #3eba18, #0d6005);
 
 }
