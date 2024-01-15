@@ -35,11 +35,15 @@ import { ref } from 'vue';
 import { getCart, modifyCart,deleteCartItem } from '@/api/cart'
 import { onMounted, computed } from 'vue';
 import {useStore } from 'vuex';
+import {  showFailToast } from 'vant';
+import { useRouter } from 'vue-router'; 
+
 
 const result = ref([]);
 const list = ref([])
 const checkAll = ref(false);
 const store = useStore();
+const router = useRouter();
 
 onMounted(async () => {
     init();
@@ -72,8 +76,13 @@ const numChange = async(value, detail) => {  // 修改数量
     await modifyCart(params)
 }
 
-const onSubmit = () => {    // 提交订单
-
+const onSubmit = ()=>{
+  if(result.value.length===0){
+    showToast('请选择商品');
+    return
+  }
+  router.push({path:'/create-order',query:{cartItemIds:JSON.stringify(result.value)}})
+    
 }
 
 const todalPrice = computed(()=> {  // 计算属性里的变量有变动时

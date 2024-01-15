@@ -7,7 +7,7 @@ import store from './store'
 
 // 1. 引入你需要的组件
 import { Button } from 'vant';
-import { SubmitBar ,Swipe, SwipeItem, Skeleton, Tabbar, TabbarItem, Icon,Form, Field, CellGroup, ActionBar, ActionBarIcon, ActionBarButton, SwipeCell, Card, Checkbox, CheckboxGroup, Stepper } from 'vant';
+import { Area, AddressEdit, AddressList, SubmitBar ,Swipe, SwipeItem, Skeleton, Tabbar, TabbarItem, Icon,Form, Field, CellGroup, ActionBar, ActionBarIcon, ActionBarButton, SwipeCell, Card, Checkbox, CheckboxGroup, Stepper } from 'vant';
 // 2. 引入组件样式
 import 'vant/lib/index.css';
 
@@ -31,6 +31,9 @@ app.use(Checkbox);
 app.use(CheckboxGroup);
 app.use(Stepper);
 app.use(SubmitBar);
+app.use(AddressList);
+app.use(AddressEdit);
+app.use(Area);
 
 app.use(router)
 app.use(store)
