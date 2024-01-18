@@ -1,0 +1,23 @@
+{
+  "id": "4323956",
+  "name": "music",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1029",
+      "name": "音乐",
+      "font_class": "yinle",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "29528544",
+      "name": "左箭头",
+      "font_class": "zuojiantou",
+      "unicode": "e644",
+      "unicode_decimal": 58948
+    }
+  ]
+}
