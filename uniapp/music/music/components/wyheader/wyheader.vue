@@ -1,23 +1,31 @@
 <template>
-	<view class="box">
-		
-	</view>
 	<view class="header">
-		<uni-icons type="bars" size="24"></uni-icons>
+		<uni-icons type="bars" size="22" @click="showMenu"></uni-icons>
+		
 		<view class="content">
 			<!-- 添加一个插槽 -->
 			<slot name="content"></slot>
 		</view>
-		<uni-icons :type="icon" size="24"></uni-icons>
+		
+		<uni-icons :type="icon" size="22"></uni-icons>
 	</view>
 	<view class="box"></view>
 </template>
 
 <script setup>
-defineProps({
-	icon:String,
-	default: 'mic'
-})
+	import { useStore } from 'vuex';
+	const store = useStore()
+	
+	defineProps({
+		icon: {
+			type: String,
+			default: 'mic'
+		}
+	})
+	
+	const showMenu = () => {
+		store.commit('changeIsShowMenu', true)
+	}
 </script>
 
 <style lang="scss" scoped>
@@ -32,7 +40,7 @@ defineProps({
 	left: 0;
 	width: 100%;
 	box-sizing: border-box;
-	z-index: 100;
+	z-index: 999;
 }
 .box{
 	height: 100rpx;

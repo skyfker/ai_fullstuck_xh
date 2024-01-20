@@ -37,14 +37,6 @@
 				"navigationBarTitleText" : "",
 				"enablePullDownRefresh" : false
 			}
-		},
-		{
-			"path" : "store/index/index",
-			"style" : 
-			{
-				"navigationBarTitleText" : "",
-				"enablePullDownRefresh" : false
-			}
 		}
 	],
 	"globalStyle": {

@@ -24,11 +24,18 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-const isShow = ref(true)
+import { computed, ref } from 'vue';
+import { useStore } from 'vuex'
+
+const store = useStore()
+// console.log(store);
+const isShow = computed(() => {
+	return store.state.isShowMenu
+})
 
 const hideMenu = () => {
-	isShow.value = false
+	// isShow.value = false
+	store.commit('changeIsShowMenu', false)
 }
 </script>
 

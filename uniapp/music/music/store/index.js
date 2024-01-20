@@ -1,8 +1,8 @@
-import { creatStore } from 'vuex';
+import { createStore } from 'vuex';
 
-export default creatStore({
+export default createStore({
 	state: {
-		isShowMenu: true, // 控制菜单显示隐藏
+		isShowMenu: false, // 控制菜单显示隐藏
 	},
 	mutations: {
 		changeIsShowMenu(state, flag) {
