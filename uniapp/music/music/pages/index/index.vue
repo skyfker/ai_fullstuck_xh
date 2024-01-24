@@ -4,7 +4,7 @@
 			<!-- 将内容填充到名为content的插槽中 -->
 			<template v-slot:content>
 				<view class="search">
-					<uni-search-bar @confirm="search" @input="input" placeholder="歌曲"></uni-search-bar>
+					<uni-search-bar placeholder="歌曲"></uni-search-bar>
 				</view>
 			</template>
 		</wyheader>
@@ -33,11 +33,11 @@
 		</view>
 		
 		<!-- 专属推荐 -->
-		<songList :list="state.recommendList" :title="推荐歌单"/>
+		<songList :list="state.recommendList" title="推荐歌单"/>
 		<!-- 推荐歌曲 -->
 		<recommendSong :list="state.recommendSongs"/>
 		<!-- 专属推荐 -->
-		<songList :list="state.personalizedList" :title="喜仔的雷达歌单"/>
+		<songList :list="state.personalizedList" title="喜仔的雷达歌单"/>
 	</view>
 </template>
 
