@@ -5,10 +5,10 @@
 			console.log('App Launch')
 			// 判断用户是否登录
 			let key = uni.getStorageSync('cookie')
-			// if (!key) {
-			// 	this.$store.commit('changeLoginState', false)
-			// 	return
-			// }
+			if (!key) {
+				this.$store.commit('changeLoginState', false)
+				return
+			}
 			// 获取登录状态
 			uni.request({
 				url: baseUrl + '/login/status',
@@ -34,7 +34,7 @@
 		},
 		methods: {
 			getUser(key) {
-				// if (!key) return
+				if (!key) return
 				uni.request({
 					url: baseUrl + '/user/account',
 					data: {
