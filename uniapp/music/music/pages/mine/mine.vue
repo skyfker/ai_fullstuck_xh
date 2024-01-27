@@ -22,7 +22,7 @@
 					</view>
 					<view class="user-desc">
 						<view class="user-desc-horoscope">
-							<text class="iconfont icon-boy"></text>
+							<text class="iconfont icon-xingbienan"></text>
 							<text>{{formateTime(userInfo.profile && userInfo.profile.birthday).ageLever}}后</text>
 							<text>{{formateTime(userInfo.profile && userInfo.profile.birthday).horoscope}}座</text>
 						</view>
