@@ -10,12 +10,12 @@ export const apiGetUserInfo = (uid) => {
 		},
 	});
 };
-// export const apiGetUserSongsList = (uid) => {
-// 	return uni.request({
-// 		url: `${baseUrl}/user/playlist`,
-// 		method: 'GET',
-// 		data: {
-// 			uid,
-// 		},
-// 	});
-// };
+export const apiGetUserSongsList = (uid) => {
+	return uni.request({
+		url: `${baseUrl}/user/playlist`,
+		method: 'GET',
+		data: {
+			uid,
+		},
+	});
+};

@@ -250,7 +250,7 @@ const changeNav = (index) => { // 0 1 2   1 3 5
 					position: relative;
 				}
 			}
-			&::after{
+			&::after{  //伪元素是行内元素
 				content: '';
 				display: block;
 				width: 30rpx;
@@ -261,7 +261,7 @@ const changeNav = (index) => { // 0 1 2   1 3 5
 				transform: translateX(-50%);
 				bottom: 15rpx;
 				border-radius: 20rpx;
-				transition: left 0.5s ease;
+				transition: left 0.5s ease;  //控制 left 属性要达到的效果
 			}
 		}
 	}
