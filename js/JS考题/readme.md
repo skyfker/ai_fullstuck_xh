@@ -44,3 +44,51 @@ Number...
 
 - 深拷贝：层层拷贝，所有类型的属性值都会被复制，原对象的修改不会影响拷贝后的对象
  JSON.parse(JSON.stringify(obj)) --- 无法处理 undefined Symbol function 循环引用
+
+
+# 14. 说说JS中的事件模型？
+1. DOM0级事件模型：onclick (无法控制事件在捕获冒泡哪个阶段执行)
+2. DOM1级事件模型：addEventListener (可以控制事件在哪个阶段执行)
+3. IE6以下：attachEvent (无法控制冒泡在哪个阶段执行)
+
+# 15.  说说typeof 和 instanceof 的区别？
+- typeof 
+    能判断除了null之外的所有原始类型（typeof的底层逻辑是判断数据前是否有 000 ，null通体为0，所以被归为Object类型）
+
+- instanceof
+    能判断一个变量是否属于某种类型，是通过原型链来判断的
+
+- object.prototype.toString()   object.prototype.tostring.call(x)
+    例如：object.prototype.toString({})  => '[object Object]'
+         object.prototype.toString([])  => '[object Object]'
+
+         object.prototype.toString.call([])  => ''
+         效果相当于[].toString()，但不是一个tostring()方法
+
+    object.prototype.tostring.call(x)，该方法会让变量 x 调用对象上的tostring()方法.
+    而[].toString()  就是调用数组身上的toString()方法
+    
+# 16. 说说Ajax的原理？
+- 是什么：
+    asyncronous javascript and xml，是一种异步js和网页交互技术，可以实现不刷新网页就跟服务器进行数据交互，更新页面
+
+- 实现过程：
+    1. 创建一个XMLHttpRequest对象
+    2. 调用实例对象中的open()方法
+    3. 调用实例对象中的send()方法
+    4. 监听onreadyStateChange事件，通过判断readyState的值来获取到最终数据
+
+- readyState:
+0: xhr 刚刚创建，请求还没发
+1：open 准备完成
+2：请求已经发送出去
+3：接收到了服务端的响应体
+4：数据解析完成
+
+# 17. 怎么实现上拉加载，下拉刷新？
+1. 监听 toutchstart   toutchmove   toutchend  事件，记录手指移动的距离，大于临界值时实现刷新操作，其中使用transform:translateY() 来添加各处动画
+
+2. 根据手指滑动的方向和容器顶部或底部到屏幕的距离来确定此时该执行上拉加载更多 还是下拉刷新
+
+# 18. 防抖节流
+
