@@ -96,20 +96,91 @@ class myPromise {
     }
 
     static all(promises) {
-        return new myPromise((resolve, reject) => {
-            let result = []
-            promises.forEach((promise, index) => {
-                promise.then((value) => {
-                    result[index] = value
-                    if(result.length === promises.length) {
-                        resolve(result)
-                    }
-                },
-                (reason) => {
-                    reject(reason)
-                }
-                )
-            })
+    return new myPromise((resolve, reject) => {
+      let count = 0
+      let arr = []
+
+      // 判断promises中的所有的promise状态是否都为fulfilled
+      promises.forEach((promise, i) => {
+        promise.then(
+          (value) => {
+            count++
+            arr[i] = value
+            if (count === promises.length) {
+              resolve(arr)
+            }
+          },
+          (reason) => {
+            reject(reason)
+          }
+
+        )
+      })
+
+    })
+  }
+
+  static any(promises) {
+    return new myPromise((resolve, reject) => {
+      let count = 0, arr = []
+
+      promises.forEach((promise, i) => {
+        promise.then(
+          (value) => {
+            resolve(value)
+          },
+          (reason) => {
+            count++
+            arr[i] = reason
+            if (count === promises.length) {
+              reject(new AggregateError(arr, 'All promises were rejected'))
+            }
+          }
+        )
+      })
+    })
+  }
+
+  finally(callback) {
+    return this.then(
+      (value) => {
+        return Promise.resolve(callback()).then(() => value)
+      },
+      (reason) => {
+        return Promise.resolve(callback()).then(() => reason)
+      }
+    )
+  }
+
+  static allSettled(promises) {
+    return new myPromise((resolve, reject) => {
+      let arr = [], count = 0
+
+      promises.forEach((promise, i) => {
+        promise.then(
+          (value) => {
+            arr[i] = {status: 'fulfilled', value: value }
+          },
+          (reason) => {
+            arr[i] = {status: 'rejected', reason: reason }
+          }
+        ).finally(() => {
+          count++
+          // 所有promise状态都变更了
+          if (count === promises.length) {
+            resolve(arr)
+          }
+          
         })
-    }
+      }) 
+
+      
+    })
+  }
+
+  static resolve(value) {
+    return new myPromise((resolve) => {
+      resolve(value)
+    })
+  }
 }
