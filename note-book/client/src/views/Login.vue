@@ -29,6 +29,8 @@
         </van-form>
   
       </div>
+
+      <p class="register" @click="goRegister">新用户点击这里注册</p>
     </div>
   
   </template>
@@ -36,9 +38,11 @@
   <script setup>
   import {ref} from 'vue'
   import axios from '@/api'
+  import {useRouter} from 'vue-router'
   
   const username = ref('')
   const password = ref('')
+  const router = useRouter()
   
   //登陆
   const onSubmit = async (values)=>{
@@ -47,14 +51,20 @@
       username:values.username,
       password:values.password
     })//get会以问号拼接到路径后面，不安全
-    console.log(res);
-  
+    // console.log(res);
+    localStorage.setItem('userInfo', JSON.stringify(res.data))
+    router.push('/noteClass')
+  }
+
+  // 注册
+  const goRegister = () => {
+    router.push('/register')
   }
   </script>
   
   <style lang="less" scoped>
   // :deep(class)深度修改
-  .login {
+  .login { 
     width: 100vw;
     height: 100vh;
     background-color: #fff;

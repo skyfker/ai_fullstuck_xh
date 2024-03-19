@@ -6,6 +6,16 @@ const routes = [
     name: 'Login',
     component: () => import('@/views/Login.vue')
   },
+  {
+    path: '/register',
+    name: 'Reigster',
+    component: () => import('@/views/Register.vue')
+  },
+  {
+    path: '/noteClass',
+    name: 'NoteClass',
+    component: () => import('@/views/NoteClass.vue')
+  }
 ]
 
 const router = createRouter({
