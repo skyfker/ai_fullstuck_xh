@@ -53,8 +53,22 @@ const userInsert = (username, password, nickname) => {
     return allService.query(_sql)
 }
 
+//根据type查找日记列表
+const findNoteListByType = (type) => {
+    let _sql = `select * from note where note_type='${type}';`
+    return allService.query(_sql)
+}
+
+//根据ID查找日记详情
+const findNoteDetailById = (id) => {
+    let _sql = `select * from note where id='${id}';`
+    return allService.query(_sql)
+}
+
 module.exports = {
     userLogin,
     userFound,
-    userInsert
+    userInsert,
+    findNoteListByType,
+    findNoteDetailById
 }

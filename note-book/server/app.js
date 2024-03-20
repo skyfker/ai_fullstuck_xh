@@ -3,6 +3,7 @@ const bodyParser = require('koa-bodyparser');
 const app = new Koa();
 const cors = require('koa2-cors'); // 允许跨域
 const user = require('./routes/user'); 
+const note = require('./routes/note');
 
 app.use(bodyParser())
 app.use(cors()) // 允许跨域
@@ -13,6 +14,7 @@ app.use(cors()) // 允许跨域
 // app.use(main);
 
 app.use(user.routes(), user.allowedMethods())
+app.use(note.routes(), note.allowedMethods())
 
 app.listen(3000, () => {
   console.log('app listening on port 3000');
