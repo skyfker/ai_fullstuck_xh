@@ -38,3 +38,24 @@ SPA(Single Page Application) 即单页面应用，是一种前端开发技术，
     双向绑定的理解
     1. vue的数据源会被劫持，在劫持的过程中为属性做依赖收集。vue中的观察者watcher负责更新视图，依赖收集到的是观察者watcher的实例对象。当属性值发生变更时会触发依赖，进而触发试图更新函数。
     2. 在数据劫持的同时，vue会编译模板，解析指令当视图层的数据发生变更时，编译器绑定的函数就会触发，进而获取到最新的数据值，再次通知watcher去触发依赖。
+
+# 4. VUE2和VUE3的区别
+ - 选项式API，组合式API
+   - this 不需要了，拥抱函数式编程
+   - 代码量大的话 data+methods+getters 相关的逻辑会变多，
+   - 组合式的API 可以让 reactive/ref + computed/watch + provide/inject 以业务为单位在一起
+ 
+ - 响应式原理
+   vue2 difineProperty（一次性代理完） 
+   vue3 reactive用的是proxy，有13种拦截方法 性能更好（懒代理）
+        ref用的是面向对象的get set
+        因为核心是 拦截 + track + trigger(set) + effect
+
+ - v-if v-for 优先级
+   - v-if 优先级高于 v-for
+   举个例子，比如ul li 的渲染
+   vue3修正了这个bug，如果v-if为false，v-for是没必要渲染的
+ - weakmap的理解
+   依赖关系的收集是靠全局的唯一的weakmap，以响应式对象为key，再是以响应式对象的属性为value，
+   proxy可以一次性代理，属性值用track收集的函数数组（effect），全部执行
+   为什么用weakmap ？ 组件有很多，响应式对象有很多，路由组件很多，当组件下线，路由切换了，有些响应式不用维护了，weakmap会在响应式对象被垃圾回收后自动删除相应的项目
