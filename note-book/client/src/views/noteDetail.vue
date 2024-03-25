@@ -1,5 +1,7 @@
 <template>
-    <div class="note-detail">
+  <div class="note-detail">
+    <Back />
+    
     <div class="note-img">
       <img :src="noteDetail.head_img" alt="">
     </div>
@@ -12,27 +14,37 @@
       <p class="title">{{noteDetail.title}}</p>
       <div class="content" v-html="noteDetail.note_content"></div>
     </div>
+
+    <div class="edit" @click="goEdit">
+      <van-icon name="records-o" size="30"/>
+    </div>
+
   </div>
 </template>
 
 <script setup>
-import { useRoute } from 'vue-router';
-import { ref, onMounted } from 'vue';
-import axios from '@/api';
+import { useRoute, useRouter } from 'vue-router';
+import { onMounted, ref } from 'vue';
+import axios from '@/api'
+import Back from '@/components/Back.vue'
 
-const route = useRoute();
-
-const noteDetail = ref({});
+const route = useRoute()
+const router = useRouter()
+const noteDetail = ref({})
 
 onMounted(async() => {
-    const res = await axios.get('/findNoteDetailById', {
-        params: {
-            id: route.query.id
-        }
-    })
-    noteDetail.value = res.data
-    console.log(res);
+  const res = await axios.get('/findNoteDetailById', {
+    params: {
+      id: route.query.id
+    }
+  })
+  noteDetail.value = res.data
+  console.log(res);
 })
+
+const goEdit = () => {
+  router.push({ path: '/notePublish', query: {id: route.query.id}})
+}
 </script>
 
 <style lang="less" scoped>
@@ -74,6 +86,18 @@ onMounted(async() => {
       color: rgba(16, 16, 16, 1);
       font-size: 0.3733rem;
     }
+  }
+  .edit{
+    position: fixed;
+    right: 10px;
+    bottom: 50px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(16, 16, 16, 0.3);
+    box-shadow: 0 0 5px #aaa;
+    text-align: center;
+    line-height: 50px;
   }
 }
 </style>

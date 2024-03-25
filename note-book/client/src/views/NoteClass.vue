@@ -1,34 +1,35 @@
 <template>
-    <div class="note-class-wrapper">
-        <div class="note-class">
-            <header>
-                <div><van-icon name="wap-nav"></van-icon></div>
-                <div>
-                    <van-icon name="edit"></van-icon>
-                    <van-icon name="like-o"></van-icon>
-                    <van-icon name="search"></van-icon>
-                </div>
-            </header>
-
-            <section>
-                <div class="note-item" 
-                    v-for="(item, index) in noteClassList" 
-                    :key="index"
-                    :style="`background-color:${item.bgColor}`"
-                    @click="goNoteList(item.title)"
-                    >
-                    <span class="title">{{ item.title }}</span>
-                </div>
-            </section>
+  <div class="note-class-wrapper">
+    <div class="note-class">
+      <header>
+        <div><van-icon name="wap-nav" /></div>
+        <div>
+          <van-icon name="edit" @click="goPublish" />
+          <van-icon name="like-o" />
+          <van-icon name="search" />
         </div>
+      </header>
+      <section>
+        <div 
+          class="note-item" 
+          v-for="(item, index) in noteClassList" 
+          :key="index"
+          :style="`background-color:${item.bgColor}`"
+          @click="goNoteList(item.title)"
+        >
+          <span class="title">{{item.title}}</span>
+        </div>
+
+      </section>
     </div>
+  </div>
 </template>
 
 <script setup>
 import { reactive } from 'vue';
 import { useRouter } from 'vue-router';
 
-const router = useRouter();
+const router = useRouter()
 
 const noteClassList = [
   { bgColor: '#f0aa84', title: '美食' },
@@ -38,11 +39,15 @@ const noteClassList = [
   { bgColor: '#949c9d', title: '吵架' }
 ]
 
+
 const goNoteList = (title) => {
-    router.push({path: '/noteList', query: {title: title}}); 
-    //params和query的区别，params参数看不见,并且要在路由定义处声明（/:title）
+  router.push({ path: '/noteList', query: {title: title} })
+  // router.push({ name: 'noteList', params: {title: title} })
 }
 
+const goPublish = () => {
+  router.push('/notePublish')
+}
 </script>
 
 <style lang="less" scoped>
@@ -115,4 +120,5 @@ const goNoteList = (title) => {
     }
   }
 
-}</style>
+}
+</style>

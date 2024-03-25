@@ -41,6 +41,14 @@ const routes = [
       title: '笔记详情'
     }
   },
+  {
+    path: '/notePublish',
+    name: 'notePublish',
+    component: () => import('@/views/NotePublish.vue'),
+    meta: {
+      title: '笔记发布'
+    }
+  }
 ]
 
 const router = createRouter({
