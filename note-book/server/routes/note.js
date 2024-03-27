@@ -45,4 +45,41 @@ router.get('/findNoteDetailById', async (ctx) => {
         }
     }
 })
+router.post('/notePublish', async(ctx) => {
+    const {
+      title,
+      note_type,
+      head_img,
+      note_content,
+      userId,
+      nickname,
+      id
+    } = ctx.request.body
+    const c_time = formateDate(new Date())
+    const m_time = formateDate(new Date())
+  
+    try {
+      const res = await notePublish([userId, title, note_type, note_content, c_time, m_time, head_img, nickname, id], id)
+      if (res.affectedRows !== 0) {
+        ctx.body = {
+          code: '8000',
+          data: 'success',
+          msg: '发布成功'
+        }
+      } else {
+        ctx.body = {
+          code: '8004',
+          data: 'fail',
+          msg: '发布失败'
+        }
+      }
+    } catch (error) {
+      ctx.body = {
+        code: '8005',
+        data: error,
+        msg: '服务端异常'
+      }
+    }
+  
+  })
 module.exports = router;
