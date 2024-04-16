@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            height: 300px;
+            margin-bottom: 50px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <img src="" data-original="https://img1.baidu.com/it/u=3504078124,2689803181&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500" alt="">
+    <img src="" data-original="https://img1.baidu.com/it/u=3504078124,2689803181&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500" alt="">
+    <img src="" data-original="https://img0.baidu.com/it/u=2438360880,1979762032&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500" alt="">
+    <img src="" data-original="https://img1.baidu.com/it/u=3504078124,2689803181&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500" alt="">
+    <img src="" data-original="https://img0.baidu.com/it/u=3570889183,2260151218&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500" alt="">
+    <img src="" data-original="https://img1.baidu.com/it/u=1651562765,4082432317&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500" alt="">
+    <img src="" data-original="https://img1.baidu.com/it/u=1651562765,4082432317&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500" alt="">
+    <img src="" data-original="https://img1.baidu.com/it/u=1651562765,4082432317&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500" alt="">
+    <img src="" data-original="https://img1.baidu.com/it/u=1651562765,4082432317&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500" alt="">
+    <img src="" data-original="https://img1.baidu.com/it/u=1651562765,4082432317&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500" alt="">
+
+<script>
+    // const viewHeight = window.innerHeight;
+    const viewHeight = document.documentElement.clientHeight;
+    
+    const io = new IntersectionObserver((entries) => {
+        
+    },
+    {
+        threshold: [0.01],
+        root: document.documentElement
+    })
+
+    // function lazyLoad() {
+    //     const imgs = document.querySelectorAll('img[data-original]');
+    //     imgs.forEach(item => {
+    //         const imgTop = item.getBoundingClientRect().top;
+    //         if(imgTop < viewHeight) { // 容器的顶部小于可视区域的高度，说明在视区范围内
+    //             item.src = item.dataset.original;
+    //             item.removeAttribute('data-original'); // 图片加载完成，没必要在请求，移除属性
+    //         }
+    //     })
+    // }
+
+    // lazyLoad();
+
+    // window.addEventListener('scroll', function() {
+    //     lazyLoad();
+    // })
+
+
+</script>
+</body>
+</html>
