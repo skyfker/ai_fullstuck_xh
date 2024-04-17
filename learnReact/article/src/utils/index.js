@@ -1,6 +1,10 @@
 import { http } from "./http";
+import { getToken, setToken, removeToken } from "./token";
 
 export {
-    http
+    http,
+    getToken,
+    setToken,
+    removeToken
 }
 
