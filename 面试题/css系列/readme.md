@@ -1,6 +1,6 @@
 # 1. 说说你对css盒模型的理解
 1. 是什么？
-浏览器在页面布局时，将所有的元素表示为一个个矩形盒子，每一个盒子包含四个部分：content, padding, border, margin
+浏览器在页面布局时，将所有的元素表示为一个个矩形盒子（文本节点是匿名盒子），每一个盒子包含四个部分：content, padding, border, margin
 
 2. 标准盒模型
 盒子总宽度：width + padding + border + margin
@@ -21,7 +21,7 @@
 9. 伪元素选择器
 10. 伪类选择器
 
-!important > 内联 > id选择器 > 类名选择器 > 标签选择器
+!important > 内联(直接在标签上写样式) > id选择器 > 类名选择器 > 标签选择器
 
 # 3. 说说css中的单位有哪些？
 1. px : 像素单位，屏幕上的发光点
@@ -85,3 +85,24 @@ ppi === 像素的密度
 3. 左右先加载内容后加载：float + margin
 4. 圣杯布局：float + margin负值 + position:relative
 5. 双飞翼布局：float + margin负值
+
+# 9. flex  弹性布局
+1. 容器属性
+ - flex-flow  相当于默认情况下的 flex-direction + flex-wrap
+ - justify-content  主轴对齐方式
+ - align-items
+ - align-center 
+
+2. 子元素属性
+ - flex-grow   放大比例 默认为 0 ，即如果存在剩余空间，也不放大
+ - flex-shrink  缩小比例 默认为 1 ，即如果空间不足，该项目将缩小。
+ - flex-basis   默认占据的宽度 它的默认值为auto，即项目的本来大小。
+ - flex         flex-grow + flex-shrink + flex-basis
+ - order        子元素的排列顺序，越小越靠前
+ - align-self   子元素在交叉轴上的对齐方式
+
+# 10. @import 和 link 的区别
+1. @import 是 css 的一个语法，link 是 html 的一个标签
+2. @import只能用于导入样式，link可以加载 CSS 文件，还可以定义 RSS、rel 连接属性等。
+3. link引入的css文件和html文件是并行加载的，而@import引入的css将在页面被加载完成后才加载。
+4. @import存在兼容问题，而link则没有。
