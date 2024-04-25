@@ -68,8 +68,8 @@ ppi === 像素的密度
 
 # 7. 水平垂直居中的方式有哪些？ !!!!!
 1. position: absolute  + translate || margin负值(已知宽高)
-2. flex
-3. grid
+2. flex：justify-content  + align-items(都是center)
+3. grid: justify-content  + align-items(都是center)
 4. table:  text-align  + vertical-align  (子容器不能是块级)
 5. margin(已知宽高)
 
@@ -82,18 +82,30 @@ ppi === 像素的密度
 - 三栏布局:
 1. flex
 2. grid
-3. 左右先加载内容后加载：float + margin
+3. 左右先加载内容后加载：float + margin 
 4. 圣杯布局：float + margin负值 + position:relative
 5. 双飞翼布局：float + margin负值
 
 # 9. flex  弹性布局
+- 是什么
+  是一种布局方式，可以简便完成响应式的实现页面布局，容器中默认存在两条轴，主轴，交叉轴，默认x轴为主轴，可以用flex-direction来修改主轴的方向
+
+- 特征
+  1. 可以控制子元素在主轴上的对齐方式
+  2. 可以控制子元素在交叉轴上的对齐方式
+  3. 可以控制子元素 缩放比例， 排列顺序
+
+- 应用场景
+  1. 多栏布局
+  2. 居中
+
 1. 容器属性
  - flex-flow  相当于默认情况下的 flex-direction + flex-wrap
  - justify-content  主轴对齐方式
  - align-items
- - align-center 
+ - align-centent  交叉轴上如何对齐 
 
-2. 子元素属性
+2. 项目属性（子元素属性）
  - flex-grow   放大比例 默认为 0 ，即如果存在剩余空间，也不放大
  - flex-shrink  缩小比例 默认为 1 ，即如果空间不足，该项目将缩小。
  - flex-basis   默认占据的宽度 它的默认值为auto，即项目的本来大小。
@@ -106,3 +118,53 @@ ppi === 像素的密度
 2. @import只能用于导入样式，link可以加载 CSS 文件，还可以定义 RSS、rel 连接属性等。
 3. link引入的css文件和html文件是并行加载的，而@import引入的css将在页面被加载完成后才加载。
 4. @import存在兼容问题，而link则没有。
+
+# 10. css3新增了那些属性？
+1. 选择器： 属性选择器，伪类选择器
+2. box-shadow
+3. 裁剪： background-clip
+4. transition  (过渡)
+5. transform
+6. animation （动画）
+7. 渐变色
+
+# 11. css3中常见的动画有哪些？怎么实现？
+1. transition ： 当其他属性值发生变更时，控制该值变更所花费的时间以及变更曲线
+2. transform ： 用于做容器的旋转，平移，缩放，倾斜等动画
+3. animation ：控制容器动画的关键帧
+
+# 12. 说说回流重绘 （重排重绘）
+- 是什么
+  回流：浏览器渲染页面之前需要对结构进行布局计算
+  重绘：将已经计算好布局的容器绘制出来
+
+- 触发
+  回流：页面上有容器的几何属性发生变更
+  重绘：容器非几何属性变更 （字体，颜色）
+
+  回流必定重绘
+
+# 13. 什么是响应式？
+- 是什么
+跟随用户设备尺寸的变化，页面实现自动的适配
+
+- 实现方案：
+1. flex (适用于某个容器内的响应式)
+2. %  (常适用于外层大容器)    ------   继承父容器的大小
+3. rem + 媒体查询  （可用于任何地方）  --------  虽然也要写多个媒体查询，但是每个媒体查询中的代码量少
+4. 媒体查询 （可用于任何地方）  ---------  代码量大
+5. vw/vh  (常适用于外层大容器)   -------  相对window大小
+
+# 14. 视差滚动效果如何实现？
+- 是什么 
+多层背景以不同的速度进行移动，实现视觉上的落差
+
+- 实现：
+1. background-attachment: fixed; 
+2. perspective + translateZ
+
+# 15. css画一个三角形
+
+# 16. 如何显示一个小于10px的文字
+1. zoom
+2. transform: scale(xxx);
