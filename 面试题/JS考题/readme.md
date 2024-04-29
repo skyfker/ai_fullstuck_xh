@@ -16,6 +16,9 @@
 5. 转换：split()
 
 # 3. 谈谈js中的类型转换机制
+- 显示转换：表示在代码中明确的使用转换函数将一种数据类型转换成另一种数据类型。
+- 隐式转换：在某些运算或操作中，因为涉及到不同类型的数据，JS引擎会自动进行类型转换，从而实现运算或操作。
+
 - 是什么：
 js中有原始类型和引用类型：
 原始类型：number string boolean undefined null symbol bigint
@@ -75,7 +78,7 @@ Number...
 
 # 9. 说说你对原型的理解
  - 是什么：
-  1. 显示原型指的是函数身上自带的 prototype 属性, 通常可以将一些书型盒方法添加在显示原型上，可供实例对象继承到
+  1. 显示原型指的是函数身上自带的 prototype 属性, 通常可以将一些属性和方法添加在显示原型上，可供实例对象继承到
 
   2. 隐式原型 __proto__ 是对象这种结构上的一个属性，其中包含了创建该对象时，隐式继承到的属性
 
@@ -99,7 +102,7 @@ Number...
   7. class 继承
 
 # 11. 说说js中的this
- - 是什么：this是函数在运行过程中自动生成的一个对象，用来代指作用域的指向
+ - 是什么：this是函数在运行过程中自动生成的一个对象，用来代指作用域的指向 
 
  - 绑定规则：
   1. 默认绑定：当函数被独立调用时，函数的this指向window。(函数的词法作用域在哪里，this就指向哪个词法作用域)
@@ -112,6 +115,11 @@ Number...
 
 # 12. new的实现原理
  - 构造函数有返回值，且为引用类型时会覆盖new当中的返回值
+
+1. 创建this空对象
+2. 执行构造函数中的逻辑
+3. 让this的隐式原型===构造函数的显式原型
+4. 返回this对象
 
 # 13. call, apply, bind 原理
 
@@ -128,7 +136,8 @@ Number...
 - instanceof
     能判断一个变量是否属于某种类型，是通过原型链来判断的
 
-- object.prototype.toString()   object.prototype.tostring.call(x)
+- 最优解：   object.prototype.tostring.call(x) 
+            先看看object.prototype.toString()
     例如：object.prototype.toString({})  => '[object Object]'
          object.prototype.toString([])  => '[object Object]'
 
