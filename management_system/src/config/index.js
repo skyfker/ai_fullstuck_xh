@@ -4,13 +4,13 @@ const EnvConfig = {
         baseApi: "/api",
         mockApi: "https://apifoxmock.com/m1/4068509-0-default/api"
     },
-    prod: {
+    test: {
         baseApi: "//test.future.com/api",
-        mockApi: "/apifoxmock.com/m1/4068509-0-default/api"
+        mockApi: "https://apifoxmock.com/m1/4068509-0-default/api"
     },
     prod: {
         baseApi: "//future.com/api",
-        mockApi: "/apifoxmock.com/m1/4068509-0-default/api"
+        mockApi: "https://apifoxmock.com/m1/4068509-0-default/api"
     }
 }
 
