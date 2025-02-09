@@ -2,13 +2,13 @@
     <div class="tags">
         <el-tag v-for="(tag, index) in tags" :key="tag.name" :closable="tag.name !== 'home'"
             :effect="route.name === tag.name ? 'dark' : 'plain'" @click="handleMenu(tag)" @close="handleClose(tag,index)">
-            {{ tag.lable }}
+            {{ tag.label }}
         </el-tag>
     </div>
 </template>
 
 <script setup>
-import { onMounted, ref, computed } from 'vue'
+import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useAllDataStore } from '@/stores'
 

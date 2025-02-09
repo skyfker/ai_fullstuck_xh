@@ -16,7 +16,7 @@
             @click="handleMenu(item)"
             >
                 <component class = "icons" :is="item.icon"></component>
-                <span>{{item.lable}}</span>
+                <span>{{item.label}}</span>
             </el-menu-item>
             <el-sub-menu 
             v-for="item in hasChildren"
@@ -25,7 +25,7 @@
             >
                 <template #title>
                     <component class = "icons" :is="item.icon"></component>
-                    <span>{{item.lable}}</span>
+                    <span>{{item.label}}</span>
                 </template>
                 <el-menu-item-group >
                     <el-menu-item 
@@ -35,7 +35,7 @@
                         @click="handleMenu(subItem)"
                     >
                     <component class = "icons" :is="subItem.icon"></component>
-                    <span>{{subItem.lable}}</span>                 
+                    <span>{{subItem.label}}</span>                 
                     </el-menu-item>
                 </el-menu-item-group>
             </el-sub-menu>
@@ -49,50 +49,51 @@ import { ref, computed } from 'vue'
 import {useAllDataStore} from '@/stores'
 import { useRouter, useRoute } from 'vue-router'
 
-const list =ref([
-      	{
-          path: '/home',
-          name: 'home',
-          lable: '首页',
-          icon: 'house',
-          url: 'Home'
-      	},
-        {
-            path: '/mall',
-            name: 'mall',
-            lable: '商品管理',
-            icon: 'video-play',
-            url: 'Mall'
-        },
-        {
-            path: '/user',
-            name: 'user',
-            lable: '用户管理',
-            icon: 'user',
-            url: 'User'
-        },
-        {
-            path: 'other',
-            lable: '其他',
-            icon: 'location',
-            children: [
-                {
-                    path: '/page1',
-                    name: 'page1',
-                    lable: '页面1',
-                    icon: 'setting',
-                    url: 'Page1'
-                },
-                {
-                    path: '/page2',
-                    name: 'page2',
-                    lable: '页面2',
-                    icon: 'setting',
-                    url: 'Page2'
-                }
-            ]
-        }
-])
+// const list =ref([
+//       	{
+//           path: '/home',
+//           name: 'home',
+//           label: '首页',
+//           icon: 'house',label
+//           url: 'Home'
+//       	},
+//         {
+//             path: '/mall',
+//             name: 'mall',
+//             label: '商品管理',
+//             icon: 'video-play',
+//             url: 'Mall'
+//         },
+//         {
+//             path: '/user',
+//             name: 'user',
+//             label: '用户管理',
+//             icon: 'user',
+//             url: 'User'
+//         },
+//         {
+//             path: 'other',
+//             label: '其他',
+//             icon: 'location',
+//             children: [
+//                 {
+//                     path: '/page1',
+//                     name: 'page1',
+//                     label: '页面1',
+//                     icon: 'setting',
+//                     url: 'Page1'
+//                 },
+//                 {
+//                     path: '/page2',
+//                     name: 'page2',
+//                     label: '页面2',
+//                     icon: 'setting',
+//                     url: 'Page2'
+//                 }
+//             ]
+//         }
+// ])
+const list = computed(() => store.state.menuList)
 const noChildren = computed(() => list.value.filter(item => !item.children))
 const hasChildren =computed(() => list.value.filter(item => item.children))
 const store = useAllDataStore()

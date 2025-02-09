@@ -17,20 +17,31 @@
                 ></el-input>
             </el-form-item>
             <el-form-item>
-                <el-button type="primary" @click="login">登录</el-button>
+                <el-button type="primary" @click="handleLogin">登录</el-button>
             </el-form-item>
         </el-form>
     </div>
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { reactive, getCurrentInstance } from 'vue'
+import { useRouter } from 'vue-router'
+import { useAllDataStore } from '@/stores'
 
 const loginForm = reactive({
     username: '',
     password: ''
 })
-
+const {proxy} = getCurrentInstance()
+const store = useAllDataStore()
+const router = useRouter()
+const handleLogin = async() => {
+    const res = await proxy.$api.getMenu(loginForm)
+    store.updateMenuList(res.menuList)
+    store.state.token = res.token
+    store.addMenu(router)
+    router.push('/home')
+}
 </script>
 
 <style lang="less" scoped>
