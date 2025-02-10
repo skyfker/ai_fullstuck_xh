@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 
 function initState() {
     return {
@@ -26,12 +26,17 @@ export const useAllDataStore = defineStore('allData', () => {
     // function-->actions
 
     const state = ref(initState())
+    watch(state, (newState) => {
+        if(!newState.token) return
+        localStorage.setItem('store', JSON.stringify(newState))
+    }, { deep: true })
     function selectMenu(val) {
         if (val.name === 'home') {
             state.value.currentMenu = null
         } else {
             // console.log(val.name);
             // console.log(state.value.tags);
+            state.value.currentMenu = val
             state.value.tags.findIndex(item => item.name === val.name) === -1 ? state.value.tags.push(val) : ''
         }
     }
@@ -42,7 +47,13 @@ export const useAllDataStore = defineStore('allData', () => {
     function updateMenuList(val) {
         state.value.menuList = val
     }
-    function addMenu(router) {
+    function addMenu(router,type) {
+        if(type === 'refresh') {
+            if(JSON.parse(localStorage.getItem('store'))){
+                state.value = JSON.parse(localStorage.getItem('store'))
+                state.value.routerList = []
+            }
+        }
         const menu = state.value.menuList;
         const module = import.meta.glob('../views/**/*.vue') //Vite官方提供的功能--Glob导入，用于从文件系统中导入模块
         const routeArr = []
@@ -62,7 +73,7 @@ export const useAllDataStore = defineStore('allData', () => {
         })
         let routers = router.getRoutes()
         routers.forEach(item => {
-            if(item.name === 'main' || item.name === 'login') {
+            if(item.name === 'main' || item.name === 'login' || item.name === '404') {
                 return
             }else {
                 router.removeRoute(item.name)
