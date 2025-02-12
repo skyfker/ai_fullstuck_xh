@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@langchain/community": "^0.3.29",
+    "express": "^4.21.2",
+    "express-ws": "^5.0.2"
+  }
+}
