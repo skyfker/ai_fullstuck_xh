@@ -32,7 +32,7 @@ onMounted(() => {
 })
 
 // 连接后端socket接口
-let socket = new WebSocket('http://127.0.0.1:4600/question')
+let socket = new WebSocket('http://127.0.0.1:3600/test')
 // 消息的回调
 const messageHander = (event) => {
     //将后端返回字符串转为json对象
@@ -137,5 +137,15 @@ const initSocket = () => {
 .response-container {
     font-family: monospace; /* 使用等宽字体，模拟打字机效果 */
     display: inline-block;
+}
+
+/* 光标闪烁动画 */
+@keyframes blink {
+    0%, 100% { border-right-color: transparent; }
+    50% { border-right-color: #000; }
+}
+
+.response-container.cursor {
+    animation: blink 0.75s step-end infinite;
 }
 </style>
